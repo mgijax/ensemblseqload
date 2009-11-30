@@ -1,0 +1,212 @@
+#!/bin/sh 
+
+#
+# Installation script for vega_ensemblseqlaod
+#
+# 1) cp vega_ensemblseqload.config.default vega_ensemblseqload.config
+# 2) Install 
+#
+
+Usage=Install
+
+#
+#  Function called when the install fails.
+#
+installFailed ()
+{
+    echo "Installation Failed: `date`"
+    exit 1
+}
+
+#
+#  Verify the arguments to the script, there shouldn't be any
+#
+if [ $# -ne 0 ]
+then
+    echo "Usage: ${Usage}"
+    installFailed
+fi
+
+cd `dirname $0`
+
+#
+# establish the config file names
+#
+COMMON_CONFIG=common.config
+
+# seqload configs
+ENSEMBL_PROT_CONFIG=ensembl_proteinseqload.config
+ENSEMBL_TRANS_CONFIG=ensembl_transcriptseqload.config
+VEGA_PROT_CONFIG=vega_proteinseqload.config
+VEGA_TRANS_CONFIG=vega_transcriptseqload.config
+
+# assocload configs
+ENSEMBL_PROT_ASSOCCONFIG=ensembl_proteinassocload.config
+ENSEMBL_TRANS_ASSOCCONFIG=ensembl_transcriptassocload.config
+VEGA_PROT_ASSOCCONFIG=vega_proteinassocload.config
+VEGA_TRANS_ASSOCCONFIG=vega_transcriptassocload.config
+#
+# Make sure common config file exists and source it
+#
+if [ -r ${COMMON_CONFIG} ]
+then
+    echo "Source ${COMMON_CONFIG}"
+    . ${COMMON_CONFIG}
+else
+    echo "Cannot source configuration file: ${COMMON_CONFIG}"
+    installFailed
+fi
+
+#
+# Check to see if this is a development installation
+#
+DEV=""
+if [ "${INSTALL_TYPE}" = "dev" ]
+then
+    DEV="-d"
+fi
+
+#
+# Do vega protein seqload install
+#
+
+if [ -r ${VEGA_PROT_CONFIG} ]
+then
+    echo "Source ${VEGA_PROT_CONFIG}"
+    . ${VEGA_PROT_CONFIG}
+else
+    echo "Cannot source configuration file: ${VEGA_CONFIG}"
+    installFailed
+fi
+
+${DLAINSTALL} ${DEV}
+
+#
+# Do vega transcript seqload install
+#
+
+# source common config again
+. ${COMMON_CONFIG}
+
+if [ -r ${VEGA_TRANS_CONFIG} ]
+then
+    echo "Source ${VEGA_TRANS_CONFIG}"
+    . ${VEGA_TRANS_CONFIG}
+else
+    echo "Cannot source configuration file: ${VEGA_TRANS_CONFIG}"
+    installFailed
+fi
+
+${DLAINSTALL} ${DEV}
+
+# 
+# Do ensembl protein seqload install
+#
+
+# source common config again
+. ${COMMON_CONFIG}
+
+if [ -r ${ENSEMBL_PROT_CONFIG} ]
+then
+    echo "Source ${ENSEMBL_PROT_CONFIG}"
+    . ${ENSEMBL_PROT_CONFIG}
+else
+    echo "Cannot source configuration file: ${ENSEMBL_CONFIG}"
+    installFailed
+fi
+
+${DLAINSTALL} ${DEV}
+
+#
+# Do ensembl transcript seqload install
+# 
+
+# source common config again
+. ${COMMON_CONFIG}
+
+if [ -r ${ENSEMBL_TRANS_CONFIG} ]
+then
+    echo "Source ${ENSEMBL_TRANS_CONFIG}"
+    . ${ENSEMBL_TRANS_CONFIG}
+else
+    echo "Cannot source configuration file: ${ENSEMBL_TRANS_CONFIG}"
+    installFailed
+fi
+
+${DLAINSTALL} ${DEV}
+
+#
+# now do vega protein assocload
+#
+
+# source common config again
+. ${COMMON_CONFIG}
+
+# Make sure vega config file exists and source it
+if [ -r ${VEGA_PROT_ASSOCCONFIG} ]
+then
+    echo "Source ${VEGA_PROT_ASSOCCONFIG}"
+    . ${VEGA_PROT_ASSOCCONFIG}
+else
+    echo "Cannot source configuration file: ${VEGA_PROT_ASSOCCONFIG}"
+    installFailed
+fi
+
+${DLAINSTALL} ${DEV}
+
+#
+# now do vega assocload
+#
+
+# source common config again
+. ${COMMON_CONFIG}
+
+# Make sure vega config file exists and source it
+if [ -r ${VEGA_TRANS_ASSOCCONFIG} ]
+then
+    echo "Source ${VEGA_TRANS_ASSOCCONFIG}"
+    . ${VEGA_TRANS_ASSOCCONFIG}
+else
+    echo "Cannot source configuration file: ${VEGA_TRANS_ASSOCCONFIG}"
+    installFailed
+fi
+
+${DLAINSTALL} ${DEV}
+
+#
+# now do ensembl protein assocload
+#
+
+# source common config again
+. ${COMMON_CONFIG}
+
+# Make sure ensembl config file exists and source it
+if [ -r ${ENSEMBL_PROT_ASSOCCONFIG} ]
+then
+    echo "Source ${ENSEMBL_PROT_ASSOCCONFIG}"
+    . ${ENSEMBL_PROT_ASSOCCONFIG}
+else
+    echo "Cannot source configuration file: ${ENSEMBL_PROT_ASSOCCONFIG}"
+    installFailed
+fi
+
+${DLAINSTALL} ${DEV}
+
+#
+# now do ensembl transcript assocload
+#
+
+# source common config again
+. ${COMMON_CONFIG}
+
+# Make sure ensembl config file exists and source it
+if [ -r ${ENSEMBL_TRANS_ASSOCCONFIG} ]
+then
+    echo "Source ${ENSEMBL_TRANS_ASSOCCONFIG}"
+    . ${ENSEMBL_TRANS_ASSOCCONFIG}
+else
+    echo "Cannot source configuration file: ${ENSEMBL_TRANS_ASSOCCONFIG}"
+    installFailed
+fi
+
+${DLAINSTALL} ${DEV}

@@ -1,0 +1,172 @@
+#format: sh
+#
+#  Configuration common to VEGA and Ensembl seqload
+#
+#  This file sets up environment variables that common to both
+#  VEGA and Ensembl Sequence loads
+# 
+###########################################################################
+#
+#  If the MGICONFIG environment variable does not have a local override,
+#  use the default "live" settings.
+#
+if [ "${MGICONFIG}" = "" ]
+then
+    MGICONFIG=/usr/local/mgi/live/mgiconfig
+    export MGICONFIG
+fi
+
+# establish name of master config and source it
+CONFIG_MASTER=${MGICONFIG}/master.config.sh
+
+export CONFIG_MASTER
+
+. ${CONFIG_MASTER}
+
+###########################################################################
+#
+#  JAVA SETTINGS
+#
+###########################################################################
+
+# allow 2G initial and max heap memory
+JAVARUNTIMEOPTS="-Xms2G -Xmx2G"    
+
+JAVA_LIB=${MGI_JAVALIB}/core.jar:${MGI_JAVALIB}/dbsmgd.jar:${MGI_JAVALIB}/dbsrdr.jar:${MGI_JAVALIB}/dla.jar
+
+CLASSPATH=.:${JAVA_LIB}:${COMMON_CLASSPATH}:${VEGA_ENSEMBLSEQLOAD}/vega_ensemblseqload.jar
+
+# Java classes
+DLA_LOADER=org.jax.mgi.app.vega_ensemblseqloader.VegaEnsemblSeqloader
+DLA_START=org.jax.mgi.shr.dla.loader.DLAStart
+
+export JAVARUNTIMEOPTS JAVA_LIB CLASSPATH SEQ_INTERPRETER
+export DLA_LOADER DLA_START
+
+###########################################################################
+#
+#  LOAD SPECIFIC SETTINGS
+#
+###########################################################################
+
+#
+# input file settings
+#
+
+# how files are piped to the application
+APP_CAT_METHOD="/usr/local/bin/gunzip -c"
+
+# buffersize in bytes used by nio.ByteBuffer
+# 21,000,000 = ~20 MB
+INFILE_BUFFERSIZE=21000000
+
+export APP_CAT_METHOD INFILE_BUFFERSIZE
+
+#
+# Sequence specific settings
+#
+
+# true if a virtual (computationally derived) sequence
+SEQ_VIRTUAL=true
+
+# SwissProt sequence quality
+SEQ_QUALITY=Medium
+
+export SEQ_VIRTUAL SEQ_QUALITY
+
+# source information
+SEQ_ORGANISM="mouse, laboratory"
+SEQ_STRAIN=C57BL/6J
+SEQ_TISSUE="Not Specified"
+SEQ_AGE="Not Specified"
+SEQ_GENDER=Pooled
+SEQ_CELLLINE="Not Specified"
+
+export SEQ_ORGANISM SEQ_STRAIN SEQ_TISSUE SEQ_AGE SEQ_GENDER SEQ_CELLLINE
+
+#
+# general settings
+#
+
+# SQL STREAM
+# this overrides the default BCP_Inline_Stream
+DLA_LOAD_STREAM=org.jax.mgi.shr.dbutils.dao.BCP_Stream
+DLA_QC_STREAM=org.jax.mgi.shr.dbutils.dao.BCP_Stream
+
+# prefix of Configuration variable names for the load database
+# e.g. prefixes DBSERVER, DBNAME, BCP_PATH, etc
+DLA_DB_PREFIX=MGD
+
+export DLA_LOAD_STREAM DLA_QC_STREAM DLA_DB_PREFIX 
+
+# incremental, incremental_initial, or delete_reload
+# incremental_initial uses no event detections - add only
+SEQ_LOAD_MODE=delete_reload
+
+# Don't use associated clones to determine sequence source
+MS_OK_TO_SEARCH_ASSOC_CLONES=false
+
+# path to repeat file; file spseqload writes sequences found more than
+# once in the input
+SEQ_REPEAT_FILE=${OUTPUTDIR}/repeats.out
+
+export SEQ_LOAD_MODE MS_OK_TO_SEARCH_ASSOC_CLONES SEQ_REPEAT_FILE
+
+# Send debug messages to the diagnostic log
+# toggle these to true as needed
+LOG_DEBUG=false
+DBDEBUG=true
+CACHE_DEBUG=false
+
+# logger factory class - allows classes to get their own loggers
+LOG_FACTORY=org.jax.mgi.shr.dla.log.DLALoggerFactory
+
+export LOG_DEBUG DBDEBUG CACHE_DEBUG LOG_FACTORY
+
+###########################################################################
+#
+#  BCP MANAGER SETTINGS BY DATABASE
+#
+###########################################################################
+
+#  Settings used to create a BCP manager for the MGD database
+MGD_BCP_PATH=${OUTPUTDIR}
+MGD_BCP_PREVENT_EXECUTE=false
+MGD_BCP_TRUNCATE_LOG=true
+MGD_BCP_DROP_INDEXES=false
+MGD_BCP_RECORD_STAMPING=false
+MGD_BCP_AUTO_FLUSH=false
+MGD_BCP_OK_TO_OVERWRITE=false
+
+export MGD_BCP_PATH MGD_BCP_PREVENT_EXECUTE MGD_BCP_TRUNCATE_LOG
+export MGD_BCP_DROP_INDEXES MGD_BCP_RECORD_STAMPING MGD_BCP_AUTO_FLUSH
+export MGD_BCP_OK_TO_OVERWRITE
+
+#  Settings used to create a BCP manager for the MGD database
+RADAR_BCP_PATH=${OUTPUTDIR}
+RADAR_BCP_PREVENT_EXECUTE=false
+RADAR_BCP_TRUNCATE_LOG=true
+RADAR_BCP_DROP_INDEXES=false
+RADAR_BCP_RECORD_STAMPING=false
+RADAR_BCP_AUTO_FLUSH=true
+RADAR_BCP_OK_TO_OVERWRITE=false
+
+export RADAR_BCP_PATH RADAR_BCP_PREVENT_EXECUTE RADAR_BCP_TRUNCATE_LOG
+export RADAR_BCP_DROP_INDEXES RADAR_BCP_RECORD_STAMPING RADAR_BCP_AUTO_FLUSH
+export RADAR_BCP_OK_TO_OVERWRITE
+
+###########################################################################
+#
+#  MISCELLANEOUS SETTINGS
+#
+###########################################################################
+
+#  Installation directory for the vega and ensembl sequence load
+INSTALLDIR=${VEGA_ENSEMBLSEQLOAD}
+
+export INSTALLDIR
+
+#  Recipient list for mailing the curation log file (comma-separated)
+MAIL_LOG_CUR="mgiadmin"
+
+export MAIL_LOG_CUR
