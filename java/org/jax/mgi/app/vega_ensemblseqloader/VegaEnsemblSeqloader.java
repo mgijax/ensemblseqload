@@ -46,7 +46,6 @@ public class VegaEnsemblSeqloader extends FASTALoader
     private VegaEnsemblSeqloadCfg loadCfg = null;
     private int seqCtr = 0;
     private BufferedWriter assocFileWriter = null;
-    private OutputDataFile debugFile = null;
     private MarkerMGIIDLookupByAssocObjectID mgiIDLookup = null;
 
     /**
@@ -67,7 +66,6 @@ public class VegaEnsemblSeqloader extends FASTALoader
     public void initialize() throws MGIException
     {
 		super.initialize();
-		debugFile = new OutputDataFile("/data/loads/vega/vega_proteinseqload/output/debugFile.txt");
 		logger.logdInfo("VegaEnsemblSeqloader initializing", true);
 		seqCfg = new SequenceLoadCfg();
 		loadCfg = new VegaEnsemblSeqloadCfg();
@@ -88,8 +86,6 @@ public class VegaEnsemblSeqloader extends FASTALoader
 		mgiIDLookup = new
 		    MarkerMGIIDLookupByAssocObjectID(gmLdbKey);
 		mgiIDLookup.initCache();
-		mgiIDLookup.printCache(debugFile);
-		debugFile.close();
 		// set molecular source attributes
 		msRaw = new MSRawAttributes();
 		msRaw.setCellLine(seqCfg.getCellLine());
