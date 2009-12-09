@@ -44,7 +44,9 @@ public class VegaEnsemblSeqloader extends FASTALoader
     private RefAssocRawAttributes refRaw = null;
     private SequenceLoadCfg seqCfg = null;
     private VegaEnsemblSeqloadCfg loadCfg = null;
+    private Boolean loadSeqs = Boolean.FALSE;
     private int seqCtr = 0;
+    private int assocCtr = 0;
     private BufferedWriter assocFileWriter = null;
     private MarkerMGIIDLookupByAssocObjectID mgiIDLookup = null;
 
@@ -69,6 +71,7 @@ public class VegaEnsemblSeqloader extends FASTALoader
 		logger.logdInfo("VegaEnsemblSeqloader initializing", true);
 		seqCfg = new SequenceLoadCfg();
 		loadCfg = new VegaEnsemblSeqloadCfg();
+		loadSeqs = loadCfg.getLoadSeqs();
 	        String assocLoadFile = loadCfg.getAssocLoadFileName();
 		String gmLdb = loadCfg.getGeneModelLogicalDBName();
 		String seqLdb = seqCfg.getLogicalDB();
@@ -138,8 +141,10 @@ public class VegaEnsemblSeqloader extends FASTALoader
      */
     public void preprocess() throws MGIException
     {
-      logger.logdInfo("deleting existing load data from previous runs", true);
-      seqProcessor.deleteSequences();
+      if (loadSeqs.equals(Boolean.TRUE) ) {
+	  logger.logdInfo("deleting existing load data from previous runs", true);
+	  seqProcessor.deleteSequences();
+      }
     }
 
     /**
@@ -188,6 +193,7 @@ public class VegaEnsemblSeqloader extends FASTALoader
 		//System.out.println("Gene assoc with GM ID: " + mgiID);
 		try {
 		    assocFileWriter.write(mgiID + "\t" +  seqID + "\n");    
+		   assocCtr++;
 		}
                 catch (IOException e) {
                     throw new MGIException(e.getMessage());
@@ -205,7 +211,9 @@ public class VegaEnsemblSeqloader extends FASTALoader
         seqin.setPrimaryAcc(accRaw);
         seqin.setSeq(seqRaw);
         seqin.addRef(refRaw);
-        super.seqProcessor.processInput(seqin);
+	if (loadSeqs.equals(Boolean.TRUE) ) {
+            super.seqProcessor.processInput(seqin);
+	}
 	seqCtr++;
   }
   /**
@@ -215,14 +223,28 @@ public class VegaEnsemblSeqloader extends FASTALoader
    */
   protected void postprocess() throws MGIException
   {
-      	logger.logdInfo("Total Sequences Loaded: " + seqCtr, false);
-	logger.logpInfo("Total Sequences Loaded: " + seqCtr, false);
+	if (loadSeqs.equals(Boolean.TRUE) ) {
+	    logger.logdInfo("Total Sequences Loaded: " + seqCtr, false);
+	    logger.logdInfo("Total Associations written to assocload file: " +
+		 assocCtr, false);
+	    logger.logpInfo("Total Sequences Loaded: " + seqCtr, false);
+            logger.logpInfo("Total Associations written to assocload file: " +
+                 assocCtr, false);
+        }
+	else {
+            logger.logdInfo("Total Associations written to assocload file: " +
+                 assocCtr, false);
+            logger.logpInfo("Total Associations written to assocload file: " +
+                 assocCtr, false);
+	}
 	try {
 	    assocFileWriter.close();
 	} catch (IOException e) {
             throw new MGIException(e.getMessage());
 	}
-	super.postprocess();
+	if (loadSeqs.equals(Boolean.TRUE) ) {
+	    super.postprocess();
+       }
   }
 
 }

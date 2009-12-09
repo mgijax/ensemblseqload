@@ -1,3 +1,14 @@
+TAG: vega_ensemblseqload-4-3-1-6
+DATE: 12/08/2009
+STAFF: sc
+CHANGES: I realized that the associatins were only getting redone
+  when reloading sequences, thus the following changes:
+1) vega_ensemblseqload.sh - added processing of second parameter
+   a boolean indicating to load sequences and assocs when true, 
+   only assocs when false
+2) VegaEnsemblSeqloadCfg - added boolean getLoadSeqs()
+3) VegaEnsemblSeqloader - added checking for boolean and processing 
+   accordingly.
 TAG: vega_ensemblseqload-4-3-1-5
 TAG: vega_ensemblseqload-4-3-1-4
 TAG: vega_ensemblseqload-4-3-1-3

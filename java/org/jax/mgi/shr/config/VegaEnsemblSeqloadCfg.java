@@ -62,5 +62,15 @@ public class VegaEnsemblSeqloadCfg extends Configurator {
     public String getGeneModelLogicalDBName() throws ConfigException {
         return getConfigString("GM_LOGICALDB");
     }
+    /**
+     * Gets whether to load sequences or just create association file
+     * @return whether to load sequences or just create association file
+     * @throws ConfigException if "LOAD_SEQS"
+     * not found in system properties
+     */
+    public Boolean getLoadSeqs() throws ConfigException {
+        return getConfigBoolean("LOAD_SEQS");
+    }
+
 
 }

@@ -61,7 +61,7 @@ rm -f ${LOG}
 #
 #  Verify the argument(s) to the shell script.
 #
-if [ $# -ne 1 ]
+if [ $# -ne 2 ]
 then
     echo ${Usage} | tee -a ${LOG}
     exit 1
@@ -71,6 +71,7 @@ fi
 #  Establish the configuration file names.
 #
 CONFIG_LOAD=`pwd`/$1
+LOAD_SEQS=$2
 CONFIG_LOAD_COMMON=`pwd`/common.config
 
 #
@@ -169,7 +170,7 @@ cleanDir ${OUTPUTDIR} ${RPTDIR}
 # Run the vega_ensembl sequence load
 #
 
-echo "Running vega_ensemblseqload ${CONFIG_LOAD}" | tee -a ${LOG_DIAG} ${LOG_PROC}
+echo "Running vega_ensemblseqload ${CONFIG_LOAD}. Loading sequences = ${LOAD_SEQS}" | tee -a ${LOG_DIAG} ${LOG_PROC}
 
 
 # log time and input files to process
@@ -181,6 +182,7 @@ echo "Processing input file ${APP_INFILES}" >> ${LOG_DIAG} ${LOG_PROC}
 ${APP_CAT_METHOD} ${APP_INFILES} | \
 ${JAVA} ${JAVARUNTIMEOPTS} -classpath ${CLASSPATH} \
 -DCONFIG=${CONFIG_MASTER},${CONFIG_LOAD_COMMON},${CONFIG_LOAD} \
+-DLOAD_SEQS=${LOAD_SEQS} \
 -DJOBKEY=${JOBKEY} ${DLA_START}
 
 STAT=$?
