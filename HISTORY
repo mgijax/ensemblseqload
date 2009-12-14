@@ -1,3 +1,8 @@
+TAG: vega_ensemblseqload-4-3-1-7
+DATE: 12/14/2009
+STAFF: sc
+CHANGES: ensembl seq config files: corrected SEQ_RELEASE_NUM to v56
+
 TAG: vega_ensemblseqload-4-3-1-6
 DATE: 12/08/2009
 STAFF: sc
