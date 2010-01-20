@@ -7,7 +7,7 @@
 #            transcript and protein sequence loads and optionally 
 #	     the association loads
 #
-  Usage="vega_ensemblseqload.sh config_file"
+  Usage="Usage: vega_ensemblseqload.sh config_file load_seqs? [true|false]"
 #
 #     e.g. "vega_ensemblseqload.sh vega_proteinseqload.config
 #
