@@ -15,6 +15,7 @@ import org.jax.mgi.dbs.mgd.loads.SeqRefAssoc.RefAssocRawAttributes;
 import org.jax.mgi.dbs.mgd.loads.Seq.SequenceRawAttributes;
 import org.jax.mgi.shr.dla.loader.seq.SeqloaderConstants;
 import org.jax.mgi.dbs.mgd.lookup.LogicalDBLookup;
+import org.jax.mgi.dbs.mgd.lookup.SequenceKeyLookupBySeqID;
 import org.jax.mgi.shr.config.SequenceLoadCfg;
 import org.jax.mgi.shr.ioutils.OutputDataFile;
 
@@ -49,6 +50,11 @@ public class VegaEnsemblSeqloader extends FASTALoader
     private int assocCtr = 0;
     private BufferedWriter assocFileWriter = null;
     private MarkerMGIIDLookupByAssocObjectID mgiIDLookup = null;
+    private SequenceKeyLookupBySeqID seqKeyLookup = null;
+    // set of gm Ids with no sequence in MGI
+    private HashSet gmIdsNotInMGI = null;
+    // set of gm Ids with sequence in MGI, but not associated with a marker
+    private HashSet gmIdsNoMarkerInMGI = null;
 
     /**
      * constructor
@@ -89,6 +95,10 @@ public class VegaEnsemblSeqloader extends FASTALoader
 		mgiIDLookup = new
 		    MarkerMGIIDLookupByAssocObjectID(gmLdbKey);
 		mgiIDLookup.initCache();
+		seqKeyLookup = new SequenceKeyLookupBySeqID(gmLdbKey.intValue());
+		seqKeyLookup.initCache();
+		gmIdsNotInMGI = new HashSet();
+		gmIdsNoMarkerInMGI = new HashSet();
 		// set molecular source attributes
 		msRaw = new MSRawAttributes();
 		msRaw.setCellLine(seqCfg.getCellLine());
@@ -107,7 +117,7 @@ public class VegaEnsemblSeqloader extends FASTALoader
 		refRaw = new RefAssocRawAttributes();
 		refRaw.setMgiType(new Integer(MGITypeConstants.SEQUENCE));
 		refRaw.setRefAssocType(new Integer(MGIRefAssocTypeConstants.PROVIDER));
-	refRaw.setRefId(seqCfg.getJnumber());
+		refRaw.setRefId(seqCfg.getJnumber());
 		// set reusable sequence attributes
 		// other record base attributes are set in the load method
 		seqRaw = new SequenceRawAttributes();
@@ -186,24 +196,37 @@ public class VegaEnsemblSeqloader extends FASTALoader
 	String gmId = (t.substring(5));
 	//System.out.println("gmID: '" + gmId + "'");
 	//System.out.println("lookup: " + mgiIDLookup);
-	mgiIDSet = (HashSet)mgiIDLookup.lookup(gmId);
-	if (mgiIDSet != null) {
-	    for (Iterator i = mgiIDSet.iterator();i.hasNext();) {
-		String mgiID = (String)i.next();
-		//System.out.println("Gene assoc with GM ID: " + mgiID);
-		try {
-		    assocFileWriter.write(mgiID + "\t" +  seqID + "\n");    
-		   assocCtr++;
-		}
-                catch (IOException e) {
-                    throw new MGIException(e.getMessage());
-                }
-	    }
+	// Is the Gene Model sequence in the database? If not report it, 
+	// if so, is it associated with a marker? If not report it, if so
+	// create association between marker and protein/transcript sequence
+	Integer sequenceKey  = seqKeyLookup.lookup(gmId);
+	if (sequenceKey == null) {
+	    //logger.logcInfo("GM ID not in the database: " + gmId, false);
+	    gmIdsNotInMGI.add(gmId);
 	}
 	else {
-	   logger.logcInfo("GM ID not associated with marker: " + gmId + " therefore SeqID not associated with marker: " + seqID, false);
+	    mgiIDSet = (HashSet)mgiIDLookup.lookup(gmId);
+	    if (mgiIDSet != null) {
+		for (Iterator i = mgiIDSet.iterator();i.hasNext();) {
+		    String mgiID = (String)i.next();
+		    //System.out.println("Gene assoc with GM ID: " + mgiID);
+		    try {
+			assocFileWriter.write(mgiID + "\t" +  seqID + "\n");    
+		       assocCtr++;
+		    }
+		    catch (IOException e) {
+			throw new MGIException(e.getMessage());
+		    }
+		}
+	    }
+	    else {
+	       //logger.logcInfo("GM ID not associated with marker: " + gmId + 
+		   // " therefore SeqID not associated with marker: " + seqID, false);
+		gmIdsNoMarkerInMGI.add("GM ID not associated with marker: " + 
+		    gmId + " therefore SeqID not associated with marker: " + seqID);
+	    }
 	}
-	// Now finish building the input object and send to processor
+	// Now finish building the sequence input object and send to processor
         seqRaw.setDescription(descript);
         seqRaw.setLength(new Integer(data.getSeqLength()).toString());
         accRaw.setAccid(seqID);
@@ -227,6 +250,16 @@ public class VegaEnsemblSeqloader extends FASTALoader
 	    logger.logdInfo("Total Sequences Loaded: " + seqCtr, false);
 	    logger.logdInfo("Total Associations written to assocload file: " +
 		 assocCtr, false);
+	    logger.logcInfo(gmIdsNotInMGI.size() + 
+		" Gene Models not found In MGI:", false);
+	    for (Iterator i = gmIdsNotInMGI.iterator(); i.hasNext(); ) {
+		logger.logcInfo( (String)i.next(), false);
+	    }
+	    logger.logcInfo(gmIdsNoMarkerInMGI.size() + 
+		" Gene Models In MGI but no Marker Association:", false);
+	    for (Iterator i = gmIdsNoMarkerInMGI.iterator(); i.hasNext(); ) {
+		logger.logcInfo( (String)i.next(), false);
+	    }
 	    logger.logpInfo("Total Sequences Loaded: " + seqCtr, false);
             logger.logpInfo("Total Associations written to assocload file: " +
                  assocCtr, false);
