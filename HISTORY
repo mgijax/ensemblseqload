@@ -1,4 +1,14 @@
-gyhtTAG: vega_ensemblseqload-4-3-1-9
+TAG: vega_ensemblseqload-4-3-1-10
+DATE: 01/22/2009
+STAFF: sc
+CHANGES:
+1) all config files, disambiguated marker association and 
+   sequence association
+2) added createSeqAssocInputFile.py
+3) vega_ensemblseqload.sh - added commented out call to 
+	createSeqAssocInputFile.py
+
+TAG: vega_ensemblseqload-4-3-1-9
 DATE: 01/22/2009
 STAFF: sc
 CHANGES:

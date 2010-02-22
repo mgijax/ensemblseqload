@@ -188,6 +188,16 @@ ${JAVA} ${JAVARUNTIMEOPTS} -classpath ${CLASSPATH} \
 STAT=$?
 checkStatus ${STAT} "${VEGA_ENSEMBLSEQLOAD}"
 
+# create input file for and run seqseqassocload
+#${APP_CAT_METHOD} ${APP_INFILES} |
+#    ${VEGA_ENSEMBLSEQLOAD}/bin/createSeqAssocInputFile.py
+#STAT=$?
+#checkStatus ${STAT} "createSeqAssocInputFile"
+
+#${SEQSEQASSOCLOAD}/bin/seqseqassocload.sh ${JOBSTREAM}
+#STAT=$?
+#checkStatus ${STAT} "seqseqassocload"
+
 # run sequence/marker assocload 
 if [ ${ASSOC_JNUMBER} != "0" ]
 then
