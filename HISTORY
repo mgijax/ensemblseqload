@@ -1,6 +1,15 @@
+TAG: vega_ensemblseqload-4-3-3-2
+DATE: 01/24/2010
+STAFF: sc
+CHANGES:
+1) provider.config files added CONFIG_SEQASSOC to
+   run seqseqassocload
+2) INFILE_SEQASSOCLOAD - updated filename
+3) vega_ensemblseqload.sh - added call to seqseqassocload
+
 TAG: vega_ensemblseqload-4-3-3-1
 TAG: vega_ensemblseqload-4-3-1-10
-DATE: 01/22/2009
+DATE: 01/22/2010
 STAFF: sc
 CHANGES:
 1) all config files, disambiguated marker association and 
@@ -10,14 +19,14 @@ CHANGES:
 	createSeqAssocInputFile.py
 
 TAG: vega_ensemblseqload-4-3-1-9
-DATE: 01/22/2009
+DATE: 01/22/2010
 STAFF: sc
 CHANGES:
 1) Update curation logging, updated specific config files
   with proper RELEASE_NO
 
 TAG: vega_ensemblseqload-4-3-1-8
-DATE: 01/20/2009
+DATE: 01/20/2010
 STAFF: sc
 CHANGES: 
 1) *seqload.config - updated to use /data/downloads symlinks

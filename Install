@@ -3,9 +3,7 @@
 #
 # Installation script for vega_ensemblseqlaod
 #
-# 1) cp vega_ensemblseqload.config.default vega_ensemblseqload.config
-# 2) Install 
-#
+###########################################################################
 
 Usage=Install
 
@@ -17,15 +15,6 @@ installFailed ()
     echo "Installation Failed: `date`"
     exit 1
 }
-
-#
-#  Verify the arguments to the script, there shouldn't be any
-#
-if [ $# -ne 0 ]
-then
-    echo "Usage: ${Usage}"
-    installFailed
-fi
 
 cd `dirname $0`
 
@@ -45,6 +34,7 @@ ENSEMBL_PROT_ASSOCCONFIG=ensembl_proteinassocload.config
 ENSEMBL_TRANS_ASSOCCONFIG=ensembl_transcriptassocload.config
 VEGA_PROT_ASSOCCONFIG=vega_proteinassocload.config
 VEGA_TRANS_ASSOCCONFIG=vega_transcriptassocload.config
+
 #
 # Make sure common config file exists and source it
 #

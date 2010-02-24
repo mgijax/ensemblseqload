@@ -188,20 +188,26 @@ ${JAVA} ${JAVARUNTIMEOPTS} -classpath ${CLASSPATH} \
 STAT=$?
 checkStatus ${STAT} "${VEGA_ENSEMBLSEQLOAD}"
 
-# create input file for and run seqseqassocload
-#${APP_CAT_METHOD} ${APP_INFILES} |
-#    ${VEGA_ENSEMBLSEQLOAD}/bin/createSeqAssocInputFile.py
-#STAT=$?
-#checkStatus ${STAT} "createSeqAssocInputFile"
+if [ ${LOAD_SEQS} = "true" ]
+then
+    echo "Running the Sequence-Sequence Association Load" | 
+	tee -a ${LOG_DIAG} ${LOG_PROC}
+    echo "\n`date`" >> ${LOG_PROC}
 
-#${SEQSEQASSOCLOAD}/bin/seqseqassocload.sh ${JOBSTREAM}
-#STAT=$?
-#checkStatus ${STAT} "seqseqassocload"
+    # create input file for then run seqseqassocload
+    ${APP_CAT_METHOD} ${APP_INFILES} |
+	${VEGA_ENSEMBLSEQLOAD}/bin/createSeqAssocInputFile.py
+    STAT=$?
+    checkStatus ${STAT} "createSeqAssocInputFile"
 
+    ${SEQSEQASSOCLOAD}/bin/seqseqassocload.sh ${CONFIG_SEQASSOC}
+    STAT=$?
+    checkStatus ${STAT} "seqseqassocload"
+fi
 # run sequence/marker assocload 
 if [ ${ASSOC_JNUMBER} != "0" ]
 then
-    echo "Running the assocload" | tee -a ${LOG_DIAG} ${LOG_PROC}
+    echo "Running the Marker assocload" | tee -a ${LOG_DIAG} ${LOG_PROC}
     echo "\n`date`" >> ${LOG_PROC}
 
     ${ASSOCLOADER_SH} ${CONFIG_LOAD} ${CONFIG_ASSOCLOAD}

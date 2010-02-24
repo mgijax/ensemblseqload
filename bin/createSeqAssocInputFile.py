@@ -108,6 +108,8 @@ def run():
             #print '%s %s %s %s' % (seq1, qualifier, seq2, CRT)
 	    outFile.write('%s%s%s%s%s%s' %  
 		(seq1, TAB, qualifier, TAB, seq2, CRT) )
+    inFile.close()
+    outFile.close()
 #
 # Main
 #
