@@ -4,8 +4,15 @@
 ###########################################################################
 #
 #  Purpose:  This script controls the execution of the vega and ensembl 
-#            transcript and protein sequence loads and optionally 
-#	     the association loads
+#            transcript and protein sequence load. For a given provider, 
+#	     determined by the config file parameter1:
+#	     1) load sequences if parameter2 = true
+#	     2) load associations btwn transcripts and genomic sequences 
+#	        and associations proteins and transcripts if parameter2 = true
+#	     3) load marker associations regardless of the value of 
+#	         parameter2
+#	     Note: during development you can avoid loading marker associations
+#	         by setting *assocload.config ASSOC_JNUMBER=0
 #
   Usage="Usage: vega_ensemblseqload.sh config_file load_seqs? [true|false]"
 #
@@ -20,16 +27,21 @@
 #      - Common configuration file -
 #		/usr/local/mgi/live/mgiconfig/master.config.sh
 #      - Common load configuration file - common.config
-#      - Specific load configuration file - e.g. vega_proteinseqload.config
-#      - sequence input file 
-#      - sequence/marker association file (optional)
+#      - Specific sequence load configuration file - 
+#	   e.g. vega_proteinseqload.config
+#      - Specific marker assocload configuration file - 
+#          e.g. vega_proteinassocload.config
+#      - Sequence input file 
+#      - Sequence/marker association file (created from sequence input file 
+#	   and the database)
 #
 #  Outputs:
 #
 #      - An archive file
 #      - Log files defined by the environment variables ${LOG_PROC},
 #        ${LOG_DIAG}, ${LOG_CUR} and ${LOG_VAL}
-#      - BCP files for for inserts to each database table to be loaded
+#      - assocload input file for marker associations
+#      - BCP files for inserts to each database table to be loaded
 #      - Records written to the database tables
 #      - Exceptions written to standard error
 #      - Configuration and initialization errors are written to a log file
@@ -205,6 +217,7 @@ then
     checkStatus ${STAT} "seqseqassocload"
 fi
 # run sequence/marker assocload 
+# use ASSOC_JNUMBER=0 to not run the assocload during development
 if [ ${ASSOC_JNUMBER} != "0" ]
 then
     echo "Running the Marker assocload" | tee -a ${LOG_DIAG} ${LOG_PROC}

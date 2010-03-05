@@ -53,6 +53,9 @@ export DLA_LOADER DLA_START
 # input file settings
 #
 
+# Input file directory
+INPUTDIR=${DATALOADSOUTPUT}/mgi/genemodelload
+
 # how files are piped to the application
 APP_CAT_METHOD="/usr/local/bin/gunzip -c"
 

@@ -4,12 +4,15 @@
 #
 # Purpose:
 #       From sequence input file create sequence association input file
+#       for current provider (VEGA or Ensembl)
 #
 Usage="createSeqAssocInputFile.py"
 # Env Vars:
-#	 1. INFILE_SEQASSOCLOAD
-#	 2. SEQ_POSITION
-#	 3. QUALIFIER
+#	 1. INFILE_SEQASSOCLOAD - the input file for this script
+#	 2. SEQ_POSITION - the token position (split on ' ') in the description line 
+#	     corresponding to seqId2 (genomic or transcript)
+#	 3. QUALIFIER - qualification term between seqId1 (transcript or protein)
+#		and seqId2 (genomic or transcript)
 #
 # Inputs:
 # 1. FASTA sequence file. We parse the description line
@@ -73,6 +76,13 @@ seq1Position = 0
 seq2Position = ''
 qualifier = ''
 
+# Purpose:  get input from stdin, create file descriptors
+#           set globals from the environment
+# Returns: nothing
+# Assumes: input file has been piped to stdin
+# Effects: created empty file in the file system
+# Throws: nothing
+
 def init():
     global inFile, outFile, seq2Position, qualifier
 
@@ -92,6 +102,13 @@ def init():
         sys.exit(1)
     seq2Position = int(os.environ['SEQ_POSITION'])
     qualifier = os.environ['QUALIFIER']
+
+# Purpose: read and parse the input file, writes to
+#           the output file
+# Returns: nothing
+# Assumes: inFile and outFile are valid file descriptors
+# Effects: writes to file in the file system
+# Throws: nothing
 
 def run():
     print 'Creating association file'
