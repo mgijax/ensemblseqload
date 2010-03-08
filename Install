@@ -57,146 +57,17 @@ then
 fi
 
 #
-# Do vega protein seqload install
+# run DLAInstall for each configuration file
 #
+echo 'running DLAINSTALL'
 
-if [ -r ${VEGA_PROT_CONFIG} ]
-then
-    echo "Source ${VEGA_PROT_CONFIG}"
-    . ${VEGA_PROT_CONFIG}
-else
-    echo "Cannot source configuration file: ${VEGA_CONFIG}"
-    installFailed
-fi
-
+. ensembl_proteinassocload.config 
 ${DLAINSTALL} ${DEV}
 
-#
-# Do vega transcript seqload install
-#
+for c in `ls *load.config`
+do
+    echo "Source ${c}"
+    . ${c}
+    ${DLAINSTALL} ${DEV} -x
+done
 
-# source common config again
-. ${COMMON_CONFIG}
-
-if [ -r ${VEGA_TRANS_CONFIG} ]
-then
-    echo "Source ${VEGA_TRANS_CONFIG}"
-    . ${VEGA_TRANS_CONFIG}
-else
-    echo "Cannot source configuration file: ${VEGA_TRANS_CONFIG}"
-    installFailed
-fi
-
-${DLAINSTALL} ${DEV}
-
-# 
-# Do ensembl protein seqload install
-#
-
-# source common config again
-. ${COMMON_CONFIG}
-
-if [ -r ${ENSEMBL_PROT_CONFIG} ]
-then
-    echo "Source ${ENSEMBL_PROT_CONFIG}"
-    . ${ENSEMBL_PROT_CONFIG}
-else
-    echo "Cannot source configuration file: ${ENSEMBL_CONFIG}"
-    installFailed
-fi
-
-${DLAINSTALL} ${DEV}
-
-#
-# Do ensembl transcript seqload install
-# 
-
-# source common config again
-. ${COMMON_CONFIG}
-
-if [ -r ${ENSEMBL_TRANS_CONFIG} ]
-then
-    echo "Source ${ENSEMBL_TRANS_CONFIG}"
-    . ${ENSEMBL_TRANS_CONFIG}
-else
-    echo "Cannot source configuration file: ${ENSEMBL_TRANS_CONFIG}"
-    installFailed
-fi
-
-${DLAINSTALL} ${DEV}
-
-#
-# now do vega protein assocload
-#
-
-# source common config again
-. ${COMMON_CONFIG}
-
-# Make sure vega config file exists and source it
-if [ -r ${VEGA_PROT_ASSOCCONFIG} ]
-then
-    echo "Source ${VEGA_PROT_ASSOCCONFIG}"
-    . ${VEGA_PROT_ASSOCCONFIG}
-else
-    echo "Cannot source configuration file: ${VEGA_PROT_ASSOCCONFIG}"
-    installFailed
-fi
-
-${DLAINSTALL} ${DEV}
-
-#
-# now do vega assocload
-#
-
-# source common config again
-. ${COMMON_CONFIG}
-
-# Make sure vega config file exists and source it
-if [ -r ${VEGA_TRANS_ASSOCCONFIG} ]
-then
-    echo "Source ${VEGA_TRANS_ASSOCCONFIG}"
-    . ${VEGA_TRANS_ASSOCCONFIG}
-else
-    echo "Cannot source configuration file: ${VEGA_TRANS_ASSOCCONFIG}"
-    installFailed
-fi
-
-${DLAINSTALL} ${DEV}
-
-#
-# now do ensembl protein assocload
-#
-
-# source common config again
-. ${COMMON_CONFIG}
-
-# Make sure ensembl config file exists and source it
-if [ -r ${ENSEMBL_PROT_ASSOCCONFIG} ]
-then
-    echo "Source ${ENSEMBL_PROT_ASSOCCONFIG}"
-    . ${ENSEMBL_PROT_ASSOCCONFIG}
-else
-    echo "Cannot source configuration file: ${ENSEMBL_PROT_ASSOCCONFIG}"
-    installFailed
-fi
-
-${DLAINSTALL} ${DEV}
-
-#
-# now do ensembl transcript assocload
-#
-
-# source common config again
-. ${COMMON_CONFIG}
-
-# Make sure ensembl config file exists and source it
-if [ -r ${ENSEMBL_TRANS_ASSOCCONFIG} ]
-then
-    echo "Source ${ENSEMBL_TRANS_ASSOCCONFIG}"
-    . ${ENSEMBL_TRANS_ASSOCCONFIG}
-else
-    echo "Cannot source configuration file: ${ENSEMBL_TRANS_ASSOCCONFIG}"
-    installFailed
-fi
-
-${DLAINSTALL} ${DEV}
