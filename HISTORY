@@ -1,8 +1,10 @@
+TAG: vega_ensemblseqload-4-3-3-5
 TAG: vega_ensemblseqload-4-3-3-4
 DATE: 03/08/2010
 STAFF: sc
 CHANGES:
 1) Install - loop thru config files using DLAINSTALL -x option
+2) fixed INPUTDIR added 'input'
 
 TAG: vega_ensemblseqload-4-3-3-3
 DATE: 03/05/2010

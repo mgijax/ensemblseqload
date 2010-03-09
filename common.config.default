@@ -54,7 +54,7 @@ export DLA_LOADER DLA_START
 #
 
 # Input file directory
-INPUTDIR=${DATALOADSOUTPUT}/mgi/genemodelload
+INPUTDIR=${DATALOADSOUTPUT}/mgi/genemodelload/input
 
 # how files are piped to the application
 APP_CAT_METHOD="/usr/local/bin/gunzip -c"
@@ -63,7 +63,7 @@ APP_CAT_METHOD="/usr/local/bin/gunzip -c"
 # 21,000,000 = ~20 MB
 INFILE_BUFFERSIZE=21000000
 
-export APP_CAT_METHOD INFILE_BUFFERSIZE
+export INPUTDIR APP_CAT_METHOD INFILE_BUFFERSIZE
 
 #
 # Sequence specific settings
