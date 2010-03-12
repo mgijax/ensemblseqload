@@ -2,26 +2,77 @@
 
 <H2>VEGA and Ensembl Protein and Transcript Sequence Loads</H2>
 
-<H4>Logs</H4>
+<H3>Data</H3>
 <UL>
-<LI><A HREF="/data/loads/vega/vega_proteinseqload/logs/vega_proteinseqload.proc.log">Process Summary Log</A>
-<LI><A HREF="/data/loads/vega/vega_proteinseqload/logs/vega_proteinseqload.diag.log">Diagnostic Log</A>
-<LI><A HREF="/data/loads/vega/vega_proteinseqload/logs/vega_proteinseqload.cur.log">Curator Summary Log</A>
-<LI><A HREF="/data/loads/vega/vega_transcriptseqload/logs/vega_transcriptseqload.proc.log">Process Summary Log</A>
-<LI><A HREF="/data/loads/vega/vega_transcriptseqload/logs/vega_transcriptseqload.diag.log">Diagnostic Log</A>
-<LI><A HREF="/data/loads/vega/vega_transcriptseqload/logs/vega_transcriptseqload.cur.log">Curator Summary Log</A>
-<LI><A HREF="/data/loads/ensembl/ensembl_proteinseqload/logs/ensembl_proteinseqload.proc.log">Process Summary Log</A>
-<LI><A HREF="/data/loads/ensembl/ensembl_proteinseqload/logs/ensembl_proteinseqload.diag.log">Diagnostic Log</A>
-<LI><A HREF="/data/loads/ensembl/ensembl_proteinseqload/logs/ensembl_proteinseqload.cur.log">Curator Summary Log</A>
-<LI><A HREF="/data/loads/ensembl/ensembl_transcriptseqload/logs/ensembl_transcriptseqload.proc.log">Process Summary Log</A>
-<LI><A HREF="/data/loads/ensembl/ensembl_transcriptseqload/logs/ensembl_transcriptseqload.diag.log">Diagnostic Log</A>
-<LI><A HREF="/data/loads/ensembl/ensembl_transcriptseqload/logs/ensembl_transcriptseqload.cur.log">Curator Summary Log</A>
+<LI><B>Sequence Load Input</B><BR>
+<A HREF="/data/loads/mgi/genemodelload/input/">This directory</A> contains the following gzipped files used to create sequences and sequence-sequence associations:
+    <UL>
+    <LI>vega_transcripts.gz
+    <LI>vega_proteins.gz
+    <LI>ensembl_proteins.gz
+    <LI>ensembl_transcripts.gz
+    </UL>
+<LI><B>Sequence-Sequence Association Load Input</B>
+<UL>
+<LI><A HREF="/data/loads/vega/vega_transcriptseqload/output/vega_transcript_seqseqassoc.txt">Vega Transcript to Gene Model Sequence Associations</A>
+<LI><A HREF="/data/loads/vega/vega_proteinseqload/output/vega_protein_seqseqassoc.txt">Vega Protein to Transcript Sequence Associations</A>
+<LI><A HREF="/data/loads/ensembl/ensembl_transcriptseqload/output/ensembl_transcript_seqseqassoc.txt">Ensembl Transcript to Gene Model Sequence Associations</A>
+<LI><A HREF="/data/loads/ensembl/ensembl_proteinseqload/output/ensembl_protein_seqseqassoc.txt">Ensembl Protein to Transcript Sequence Associations</A>
+</UL>
+<LI><B>Sequence to Marker Association Load Input</B><BR>
+<UL>
+<LI><A HREF="/data/loads/vega/vega_transcriptseqload/output/vega_transcript_mkrassoc.txt">VEGA Transcript Sequence/Marker Associations</A>
+<LI><A HREF="/data/loads/vega/vega_proteinseqload/output/vega_protein_mkrassoc.txt">VEGA Protein Sequence/Marker Associations</A>
+<LI><A HREF="/data/loads/ensembl/ensembl_transcriptseqload/output/ensembl_transcript_mkrassoc.txt">Ensembl Transcript Sequence/Marker Associations</A>
+<LI><A HREF="/data/loads/ensembl/ensembl_proteinseqload/output/ensembl_protein_mkrassoc.txt">Ensembl Protein Sequence/Marker Associations</A>
+</UL>
+</UL>
+<H3>Logs</H3>
+<UL>
+<LI><B>Sequence Load Logs</B><BR>
+    <UL>
+    <LI><A HREF="/data/loads/vega/vega_transcriptseqload/logs/">VEGA Transcript Sequence Load Logs</A>
+    <LI><A HREF="/data/loads/vega/vega_proteinseqload/logs/">VEGA Protein Sequence Load Logs</A>
+    <LI><A HREF="/data/loads/ensembl/ensembl_transcriptseqload/logs/">Ensembl Transcript Sequence Load Logs</A>
+    <LI><A HREF="/data/loads/ensembl/ensembl_proteinseqload/logs/">Ensembl Protein Sequence Load Logs</A>
+    </UL>
+<LI><B>Sequence-Sequence Association Load Logs</B>
+    <UL>
+    <LI><A HREF="/data/loads/vega/vega_transcript_seqseqassocload/logs/">VEGA Transcript Sequence-Sequence Association Load Logs</A>
+    <LI><A HREF="/data/loads/vega/vega_protein_seqseqassocload/logs/">VEGA Protein Sequence-Sequence Association Load Logs</A>
+    <LI><A HREF="/data/loads/ensembl/ensembl_transcript_seqseqassocload/logs/">Ensembl Transcript Sequence-Sequence Association Load Logs</A>
+    <LI><A HREF="/data/loads/ensembl/ensembl_protein_seqseqassocload/logs/">Ensembl Protein Sequence-Sequence Association Load Logs</A>
+    </UL>
+<LI><B>Sequence to Marker Association Load Logs</B><BR>
+    <UL>
+    <LI><A HREF="/data/loads/vega/vega_transcriptassocload/logs/">VEGA Transcript Sequence Marker Association Load Logs</A>
+    <LI><A HREF="/data/loads/vega/vega_proteinassocload/logs/">VEGA Protein Sequence Marker Association Load Logs</A>
+    <LI><A HREF="/data/loads/ensembl/ensembl_transcriptassocload/logs/">Ensembl Transcript Sequence Marker Association Load Logs</A>
+    <LI><A HREF="/data/loads/ensembl/ensembl_proteinassocload/logs/">Ensembl Protein Sequence Marker Association Load Logs</A>
+    </UL>
 </UL>
 
-<H4>BCP Files</H4>
+<H3>BCP Files</H3>
 <UL>
-<LI><A HREF="/data/loads/vega/vega_proteinseqload/output">VEGA Protein bcp files</A>
-<LI><A HREF="/data/loads/vega/vega_transcriptseqload/output">VEGA Transcript bcp files</A>
-<LI><A HREF="/data/loads/ensembl/ensembl_proteinseqload/output">Ensembl Protein bcp files</A>
-<LI><A HREF="/data/loads/ensembl/ensembl_transcriptseqload/output">Ensembl Transcript bcp files</A>
-</UL>
+<LI><B>Sequence Load bcp files</B><BR>
+    <UL>
+    <LI><A HREF="/data/loads/vega/vega_proteinseqload/output">VEGA Protein bcp files</A>
+    <LI><A HREF="/data/loads/vega/vega_transcriptseqload/output">VEGA Transcript bcp files</A>
+    <LI><A HREF="/data/loads/ensembl/ensembl_proteinseqload/output">Ensembl Protein bcp files</A>
+    <LI><A HREF="/data/loads/ensembl/ensembl_transcriptseqload/output">Ensembl Transcript bcp files</A>
+    </UL>
+<LI><B>Sequence-Sequence Association bcp files</B>
+<UL>
+    <LI><A HREF="/data/loads/vega/vega_transcript_seqseqassocload/output/">VEGA Transcript Sequence-Sequence Association bcp files</A>
+    <LI><A HREF="/data/loads/vega/vega_protein_seqseqassocload/output/">VEGA Protein Sequence-Sequence Association bcp files</A>
+    <LI><A HREF="/data/loads/ensembl/ensembl_transcript_seqseqassocload/output/">Ensembl Transcript Sequence-Sequence Association bcp files</A>
+    <LI><A HREF="/data/loads/ensembl/ensembl_protein_seqseqassocload/output/">Ensembl Protein Sequence-Sequence Association bcp files</A>
+    </UL>
+<LI><B>Sequence to Marker Association bcp files</B><BR>
+<UL>
+    <LI><A HREF="/data/loads/vega/vega_transcriptassocload/output/">VEGA Transcript Sequence Marker Association bcp files</A>
+    <LI><A HREF="/data/loads/vega/vega_proteinassocload/output/">VEGA Protein Sequence Marker Association bcp files</A>
+    <LI><A HREF="/data/loads/ensembl/ensembl_transcriptassocload/output/">Ensembl Transcript Sequence Marker Association bcp files</A>
+    <LI><A HREF="/data/loads/ensembl/ensembl_proteinassocload/output/">Ensembl Protein Sequence Marker Association bcp files</A>
+    </UL>
+</UL
