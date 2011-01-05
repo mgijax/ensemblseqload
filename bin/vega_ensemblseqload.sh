@@ -151,12 +151,15 @@ then
     checkStatus ${STAT} "APP_INFILES not defined"
 fi
 
-if [ ! -r ${APP_INFILES} ]
-then
-    # set STAT for endJobStream.py called from postload in shutDown
-    STAT=1
-    checkStatus ${STAT} "Input file: ${APP_INFILES} does not exist"
-fi
+for file in ${APP_INFILES} 
+do
+    if [ ! -r ${file} ]
+    then
+	# set STAT for endJobStream.py called from postload in shutDown
+	STAT=1
+	checkStatus ${STAT} "Input file: ${file} does not exist"
+    fi
+done
 
 ##################################################################
 ##################################################################

@@ -1,3 +1,10 @@
+TAG: vega_ensemblseqload-4-4-1-1
+DATE: 01/05/2011
+STAFF: sc
+CHANGES: TR10510 - Add loading of Ensembl non-coding RNA transcript sequences
+1) ensembl_transcriptseqload.config - add additional file to APP_INFILES
+2) add checking for existence of  multiple files in APP_INFILES
+
 TAG: vega_ensemblseqload-4-4-0-1
 DATE: 09/09/2010
 STAFF: sc
