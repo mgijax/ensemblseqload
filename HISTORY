@@ -1,3 +1,12 @@
+TAG: vega_ensemblseqload-4-4-1-2
+DATE: 03/01/2011
+STAFF: dbm
+CHANGES:
+1) ensembl_proteinseqload.config - updated for build 61
+2) ensembl_transcriptseqload.config - updated for build 61
+3) vega_proteinseqload.config - updated for build 41
+4) vega_transcriptseqload.config - updated for build 41
+
 TAG: vega_ensemblseqload-4-4-1-1
 DATE: 01/05/2011
 STAFF: sc
