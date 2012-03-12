@@ -1,3 +1,12 @@
+TAG: vega_ensemblseqload-4-4-2-1
+DATE: 03/12/2012
+STAFF: sc
+CHANGES: TR11002/TR11003
+1) ensembl_proteinseqload.config - updated date for build 66
+2) ensembl_transcriptseqload.config - updated date for build 66
+3) vega_proteinseqload.config - updated date for build 46
+4) vega_transcriptseqload.config - updated date for build 46
+
 TAG: vega_ensemblseqload-4-4-1-4
 DATE: 12/15/2011
 STAFF: sc
