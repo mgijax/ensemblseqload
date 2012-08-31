@@ -16,7 +16,7 @@
 #
   Usage="Usage: vega_ensemblseqload.sh config_file load_seqs? [true|false]"
 #
-#     e.g. "vega_ensemblseqload.sh vega_proteinseqload.config
+#     e.g. "vega_ensemblseqload.sh vega_proteinseqload.config true
 #
 #  Env Vars:
 #
