@@ -1,3 +1,9 @@
+TAG: vega_ensemblseqload-5-1-9-1
+DATE: 08/11/2014
+STAFF: lec
+CHANGES: TR11716/VEGA 54
+a) SEQ_RELEASE_DATE : vega_proteinseqload.config, vega_transcriptseqload.config
+
 TAG: vega_ensemblseqload-5-1-6-1
 DATE: 01/23/2014
 STAFF: lec
