@@ -1,3 +1,10 @@
+TAG: vega_ensemblseqload-5-2-1-2
+DATE: 12/09/2014
+STAFF: sc
+CHANGES: TR11794/ENSEMBL 78
+a) vega_proteinseqload.config, vega_transcriptseqload.config -
+   updated SEQ_RELEASE_DATE
+
 TAG: vega_ensemblseqload-5-2-1-1
 DATE: 12/02/2014
 STAFF: sc
