@@ -189,7 +189,8 @@ echo "Running vega_ensemblseqload ${CONFIG_LOAD}. Loading sequences = ${LOAD_SEQ
 
 
 # log time and input files to process
-echo "\n`date`" >> ${LOG_DIAG} ${LOG_PROC}
+echo "" >> ${LOG_DIAG} ${LOG_PROC}
+echo "`date`" >> ${LOG_DIAG} ${LOG_PROC}
 
 echo "Processing input file ${APP_INFILES}" >> ${LOG_DIAG} ${LOG_PROC}
 
@@ -207,7 +208,8 @@ if [ ${LOAD_SEQS} = "true" ]
 then
     echo "Running the Sequence-Sequence Association Load" | 
 	tee -a ${LOG_DIAG} ${LOG_PROC}
-    echo "\n`date`" >> ${LOG_PROC}
+    echo "" >> ${LOG_PROC}
+    echo "`date`" >> ${LOG_PROC}
 
     # create input file for then run seqseqassocload
     ${APP_CAT_METHOD} ${APP_INFILES} |
@@ -224,7 +226,8 @@ fi
 if [ ${ASSOC_JNUMBER} != "0" ]
 then
     echo "Running the Marker assocload" | tee -a ${LOG_DIAG} ${LOG_PROC}
-    echo "\n`date`" >> ${LOG_PROC}
+    echo "" >> ${LOG_PROC}
+    echo "`date`" >> ${LOG_PROC}
 
     ${ASSOCLOADER_SH} ${CONFIG_LOAD} ${CONFIG_ASSOCLOAD}
     STAT=$?
