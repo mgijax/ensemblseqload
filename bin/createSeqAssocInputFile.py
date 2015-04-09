@@ -51,9 +51,7 @@ Usage="createSeqAssocInputFile.py"
 import sys
 import os
 import mgi_utils
-import loadlib
 import string
-import db
 
 #
 # CONSTANTS
