@@ -1,7 +1,8 @@
+TAG: vega_ensemblseqload-tr11750-MP
 TAG: vega_ensemblseqload-tr11750-BP
-DATE: 04/09/2015
-STAFF: kstone
-
+DATE: 7/1/2015
+STAFF: kstone/pf
+CHANGES: break/merge point tags
 
 TAG: vega_ensemblseqload-5-2-1-3
 DATE: 01/16/2015
