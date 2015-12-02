@@ -1,5 +1,6 @@
-TAG: vega_ensemblseqload-6-0-1-?
-DATE: 11/02/2015
+TAG: vega_ensemblseqload-6-0-2-?
+TAG: vega_ensemblseqload-tr12070-1
+DATE: 12/02/2015
 STAFF: lec 
 CHANGES: 
 move SEQ_RELEASE_DATE to genemodelload/configs
