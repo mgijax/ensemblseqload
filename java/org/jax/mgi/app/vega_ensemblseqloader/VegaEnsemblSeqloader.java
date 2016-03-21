@@ -196,6 +196,17 @@ public class VegaEnsemblSeqloader extends FASTALoader
 	String gmId = (t.substring(5));
 	//System.out.println("gmID: '" + gmId + "'");
 	//System.out.println("lookup: " + mgiIDLookup);
+	
+	// remove the version from gmId by splitting the token at '.'
+        String[] gmIdSplit = gmId.split("\\.");	
+	gmId = gmIdSplit[0];
+	//System.out.println("gmID: '" + gmId + "'");
+	
+	// remove the version from seqID by splitting the token at '.'
+        String[] seqIdSplit = seqID.split("\\.");	
+	seqID = seqIdSplit[0];
+	//System.out.println("seqID: '" + seqID + "'");
+	
 	// Is the Gene Model sequence in the database? If not report it, 
 	// if so, is it associated with a marker? If not report it, if so
 	// create association between marker and protein/transcript sequence
