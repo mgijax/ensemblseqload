@@ -1,10 +1,21 @@
+TAG: vega_ensemblseqload-6-0-4-3
 TAG: vega_ensemblseqload-6-0-4-2
-DATE: 07/20/2016
+DATE: 07/20/2016, 07/25/2016
 STAFF: lec 
-CHANGES: TR12354/12382/VEGA 65
-1) vega_transcriptseqload.config
+CHANGES: TR12354/12382/VEGA 65/Ensembl 85
+1) 
+vega_proteinassocload.config
+vega_proteinseqload.config
+vega_transcriptassocload.config
+vega_transcriptseqload.config
 SEQ_RELEASE_DATE 
 add ncrna
+2)
+ensembl_proteinassocload.config
+ensembl_proteinseqload.config
+ensembl_transcriptassocload.config
+ensembl_transcriptseqload.config
+SEQ_RELEASE_DATE 
 
 TAG: vega_ensemblseqload-6-0-4-1
 DATE: 06/16/2016
