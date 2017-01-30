@@ -25,6 +25,8 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 import java.util.Iterator;
 import java.util.HashSet;
+import java.util.Vector;
+
 /**
  * A FASTALoader for loading VEGA and Ensembl Transcript and Protein sequences
  * @has MSRawAttributes, AccessionRawAttributes, SequenceRawAttributes,
@@ -41,6 +43,7 @@ public class VegaEnsemblSeqloader extends FASTALoader
 
     private MSRawAttributes msRaw = null;
     private AccessionRawAttributes accRaw = null;
+    private AccessionRawAttributes secondaryAccRaw = null;
     private SequenceRawAttributes seqRaw = null;
     private RefAssocRawAttributes refRaw = null;
     private SequenceLoadCfg seqCfg = null;
@@ -107,12 +110,19 @@ public class VegaEnsemblSeqloader extends FASTALoader
 		msRaw.setOrganism(seqCfg.getOrganism());
 		msRaw.setStrain(seqCfg.getStrain());
 		msRaw.setTissue(seqCfg.getTissue());
-		// set accession attributes
+		// set primary accession attributes
 		accRaw = new AccessionRawAttributes();
 		accRaw.setIsPreferred(new Boolean(true));
 		accRaw.setIsPrivate(new Boolean(false));
 		accRaw.setLogicalDB(seqLdb);
 		accRaw.setMgiType(new Integer(MGITypeConstants.SEQUENCE));
+		// set secondary accession attributes
+		secondaryAccRaw = new AccessionRawAttributes();
+                secondaryAccRaw.setIsPreferred(new Boolean(false));
+                secondaryAccRaw.setIsPrivate(new Boolean(false));
+                secondaryAccRaw.setLogicalDB(seqLdb);
+                secondaryAccRaw.setMgiType(new Integer(MGITypeConstants.SEQUENCE));
+
 		// set reference attributes
 		refRaw = new RefAssocRawAttributes();
 		refRaw.setMgiType(new Integer(MGITypeConstants.SEQUENCE));
@@ -137,7 +147,7 @@ public class VegaEnsemblSeqloader extends FASTALoader
 		seqRaw.setTissue(seqCfg.getTissue());
 		seqRaw.setStatus(SeqloaderConstants.ACTIVE_STATUS);
 		seqRaw.setType(seqCfg.getSeqType());
-		seqRaw.setVersion(seqCfg.getReleaseNo());
+		//seqRaw.setVersion(seqCfg.getReleaseNo());
 		seqRaw.setVirtual(seqCfg.getVirtual());
 		logger.logdInfo("VegaEnsemblSeqloader completed initialization", true);
     }
@@ -176,9 +186,9 @@ public class VegaEnsemblSeqloader extends FASTALoader
 	 * write out MGI ID and seqID to assocload file
 	 * Example of description we are tokenizing, Gene is 3rd
 	 * whitespace delimitted token:
-	 * pep:tot chromosome:VEGA:11:3031890:3089055:-1 
-	 *    Gene:OTTMUSG00000005013 
-	 * 	 Transcript:OTTMUST00000084765
+	 * pep:novel chromosome:VEGA66:11:3131850:3193407:-1 
+	 *     gene:OTTMUSG00000005013.13 
+	 *         transcript:OTTMUST00000084766.2
 	 */
 	StringTokenizer s = new StringTokenizer(descript);
 	HashSet mgiIDSet = null;
@@ -198,15 +208,20 @@ public class VegaEnsemblSeqloader extends FASTALoader
 	//System.out.println("lookup: " + mgiIDLookup);
 	
 	// remove the version from gmId by splitting the token at '.'
-        String[] gmIdSplit = gmId.split("\\.");	
-	gmId = gmIdSplit[0];
+        //String[] gmIdSplit = gmId.split("\\.");	
+	//gmId = gmIdSplit[0];
 	//System.out.println("gmID: '" + gmId + "'");
 	
-	// remove the version from seqID by splitting the token at '.'
-        String[] seqIdSplit = seqID.split("\\.");	
-	seqID = seqIdSplit[0];
+	// old code prior to remove the version from seqID by splitting the token at '.'
+        //String[] seqIdSplit = seqID.split("\\.");	
+	//seqID = seqIdSplit[0];
 	//System.out.println("seqID: '" + seqID + "'");
-	
+
+	// get the version from the seqID
+        String[] seqIdSplit = seqID.split("\\.");
+	String seqIdNoVersion = seqIdSplit[0];
+	String version =  seqIdSplit[1];
+
 	// Is the Gene Model sequence in the database? If not report it, 
 	// if so, is it associated with a marker? If not report it, if so
 	// create association between marker and protein/transcript sequence
@@ -240,9 +255,14 @@ public class VegaEnsemblSeqloader extends FASTALoader
 	// Now finish building the sequence input object and send to processor
         seqRaw.setDescription(descript);
         seqRaw.setLength(new Integer(data.getSeqLength()).toString());
-        accRaw.setAccid(seqID);
+	seqRaw.setVersion(version);
+	accRaw.setAccid(seqID);
+        secondaryAccRaw.setAccid(seqIdNoVersion);
         seqin.addMSource(msRaw);
         seqin.setPrimaryAcc(accRaw);
+	Vector v = new Vector();
+	v.add(secondaryAccRaw);
+	seqin.setSecondary(v);
         seqin.setSeq(seqRaw);
         seqin.addRef(refRaw);
 	if (loadSeqs.equals(Boolean.TRUE) ) {
