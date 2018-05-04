@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
-<!-- This XML script is used to build the vega_ensemblseqload product.
+<!-- This XML script is used to build the ensemblseqload product.
 -->
-<project name="vega_ensemblseqload" default="compile" basedir=".">
+<project name="ensemblseqload" default="compile" basedir=".">
 
    <!-- Get the system environment variables and define any other system
         properties needed by the build.
    -->
    <property environment="env"/>
-   <property name="jar.name" value="vega_ensemblseqload"/>
+   <property name="jar.name" value="ensemblseqload"/>
    <property name="classpath" value="${env.MGI_JAVALIB}/core.jar:${env.MGI_JAVALIB}/dbsmgd.jar:${env.MGI_JAVALIB}/dbsrdr.jar:${env.MGI_JAVALIB}/dla.jar:${env.JCONNECT}"/>
 
    <!-- Import the universal targets.
