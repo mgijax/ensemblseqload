@@ -1,6 +1,6 @@
 package org.jax.mgi.app.vega_ensemblseqloader;
 
-import org.jax.mgi.shr.config.VegaEnsemblSeqloadCfg;
+import org.jax.mgi.shr.config.EnsemblSeqloadCfg;
 import org.jax.mgi.shr.dla.input.fasta.FASTAData;
 import org.jax.mgi.shr.dla.loader.FASTALoader;
 import org.jax.mgi.shr.dla.loader.DLALoaderException;
@@ -36,7 +36,7 @@ import java.util.HashSet;
  * @author sc
  */
 
-public class VegaEnsemblSeqloader extends FASTALoader
+public class EnsemblSeqloader extends FASTALoader
 {
 
     private MSRawAttributes msRaw = null;
@@ -44,7 +44,7 @@ public class VegaEnsemblSeqloader extends FASTALoader
     private SequenceRawAttributes seqRaw = null;
     private RefAssocRawAttributes refRaw = null;
     private SequenceLoadCfg seqCfg = null;
-    private VegaEnsemblSeqloadCfg loadCfg = null;
+    private EnsemblSeqloadCfg loadCfg = null;
     private Boolean loadSeqs = Boolean.FALSE;
     private int seqCtr = 0;
     private int assocCtr = 0;
@@ -60,7 +60,7 @@ public class VegaEnsemblSeqloader extends FASTALoader
      * constructor
      * @throws DLALoaderException thrown from the base class
      */
-    public VegaEnsemblSeqloader() throws DLALoaderException
+    public EnsemblSeqloader() throws DLALoaderException
     {
         super();
     }
@@ -74,9 +74,9 @@ public class VegaEnsemblSeqloader extends FASTALoader
     public void initialize() throws MGIException
     {
 		super.initialize();
-		logger.logdInfo("VegaEnsemblSeqloader initializing", true);
+		logger.logdInfo("EnsemblSeqloader initializing", true);
 		seqCfg = new SequenceLoadCfg();
-		loadCfg = new VegaEnsemblSeqloadCfg();
+		loadCfg = new EnsemblSeqloadCfg();
 		loadSeqs = loadCfg.getLoadSeqs();
 	        String assocLoadFile = loadCfg.getAssocLoadFileName();
 		String gmLdb = loadCfg.getGeneModelLogicalDBName();
@@ -139,7 +139,7 @@ public class VegaEnsemblSeqloader extends FASTALoader
 		seqRaw.setType(seqCfg.getSeqType());
 		seqRaw.setVersion(seqCfg.getReleaseNo());
 		seqRaw.setVirtual(seqCfg.getVirtual());
-		logger.logdInfo("VegaEnsemblSeqloader completed initialization", true);
+		logger.logdInfo("EnsemblSeqloader completed initialization", true);
     }
 
     /**
