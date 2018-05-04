@@ -34,7 +34,7 @@ JAVARUNTIMEOPTS="-Xms2G -Xmx2G"
 
 JAVA_LIB=${MGI_JAVALIB}/core.jar:${MGI_JAVALIB}/dbsmgd.jar:${MGI_JAVALIB}/dbsrdr.jar:${MGI_JAVALIB}/dla.jar
 
-CLASSPATH=.:${JAVA_LIB}:${COMMON_CLASSPATH}:${VEGA_ENSEMBLSEQLOAD}/vega_ensemblseqload.jar
+CLASSPATH=.:${JAVA_LIB}:${COMMON_CLASSPATH}:${VEGA_ENSEMBLSEQLOAD}/ensemblseqload.jar
 
 # Java classes
 DLA_LOADER=org.jax.mgi.app.ensemblseqloader.EnsemblSeqloader
