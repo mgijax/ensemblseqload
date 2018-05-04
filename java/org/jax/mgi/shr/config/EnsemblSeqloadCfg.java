@@ -5,7 +5,7 @@ import org.jax.mgi.shr.config.ConfigException;
 
 /**
  * An object that retrieves Configuration parameters for the 
- * VegaEnsemblSeqload
+ * EnsemblSeqload
  * @has Nothing
  * <UL>
  * <LI> a configuration manager
@@ -13,24 +13,24 @@ import org.jax.mgi.shr.config.ConfigException;
  * @does
  * <UL>
  * <LI> provides methods to retrieve Configuration parameters that are
- * specific to the VegaEnsemblSeqload
+ * specific to the EnsemblSeqload
  * </UL>
  * @company The Jackson Laboratory
  * @author sc
  * @version 1.0
  */
 
-public class VegaEnsemblSeqloadCfg extends Configurator {
+public class EnsemblSeqloadCfg extends Configurator {
 
     /**
-    * Constructs a VegaEnsemblSeqload Configuration object
+    * Constructs a EnsemblSeqload Configuration object
     * @assumes Nothing
     * @effects Nothing
     * @throws ConfigException if a configuration manager cannot be 
     * obtained
     */
 
-    public VegaEnsemblSeqloadCfg() throws ConfigException {
+    public EnsemblSeqloadCfg() throws ConfigException {
     }
 
 
