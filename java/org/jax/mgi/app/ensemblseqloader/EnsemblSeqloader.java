@@ -26,12 +26,12 @@ import java.util.StringTokenizer;
 import java.util.Iterator;
 import java.util.HashSet;
 /**
- * A FASTALoader for loading VEGA and Ensembl Transcript and Protein sequences
+ * A FASTALoader for loading Ensembl Transcript and Protein sequences
  * @has MSRawAttributes, AccessionRawAttributes, SequenceRawAttributes,
  * RefAssocRawAttributes which are used as input to the SequenceInput object
  * which eventually gets processed by the SequenceProcessor. It also has
  * a SequenceLoadCfg performing configuration and a
- * @does loads sequence objects from VEGA and Ensembl fasta files
+ * @does loads sequence objects from Ensembl fasta files
  * @company The Jackson Laboratory
  * @author sc
  */
@@ -176,9 +176,9 @@ public class EnsemblSeqloader extends FASTALoader
 	 * write out MGI ID and seqID to assocload file
 	 * Example of description we are tokenizing, Gene is 3rd
 	 * whitespace delimitted token:
-	 * pep:tot chromosome:VEGA:11:3031890:3089055:-1 
-	 *    Gene:OTTMUSG00000005013 
-	 * 	 Transcript:OTTMUST00000084765
+	 * pep:tot chromosome:????:11:3031890:3089055:-1 
+	 *    Gene:????
+	 * 	 Transcript:????
 	 */
 	StringTokenizer s = new StringTokenizer(descript);
 	HashSet mgiIDSet = null;
