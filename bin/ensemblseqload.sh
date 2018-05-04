@@ -1,9 +1,9 @@
 #!/bin/sh
 #
-#  vega_ensemblseqload.sh
+#  ensemblseqload.sh
 ###########################################################################
 #
-#  Purpose:  This script controls the execution of the vega and ensembl 
+#  Purpose:  This script controls the execution of the ensembl 
 #            transcript and protein sequence load. For a given provider, 
 #	     determined by the config file parameter1:
 #	     1) load sequences if parameter2 = true
@@ -14,9 +14,9 @@
 #	     Note: during development you can avoid loading marker associations
 #	         by setting *assocload.config ASSOC_JNUMBER=0
 #
-  Usage="Usage: vega_ensemblseqload.sh config_file load_seqs? [true|false]"
+  Usage="Usage: ensemblseqload.sh config_file load_seqs? [true|false]"
 #
-#     e.g. "vega_ensemblseqload.sh vega_proteinseqload.config true
+#     e.g. "ensemblseqload.sh ensembl_proteinseqload.config true
 #
 #  Env Vars:
 #
@@ -28,9 +28,9 @@
 #		/usr/local/mgi/live/mgiconfig/master.config.sh
 #      - Common load configuration file - common.config
 #      - Specific sequence load configuration file - 
-#	   e.g. vega_proteinseqload.config
+#	   e.g. ensembl_proteinseqload.config
 #      - Specific marker assocload configuration file - 
-#          e.g. vega_proteinassocload.config
+#          e.g. ensembl_proteinassocload.config
 #      - Sequence input file 
 #      - Sequence/marker association file (created from sequence input file 
 #	   and the database)
@@ -67,7 +67,7 @@
 #
 
 cd `dirname $0`/..
-LOG=`pwd`/vega_ensemblseqload.log
+LOG=`pwd`/ensemblseqload.log
 rm -f ${LOG}
 
 #
@@ -182,10 +182,10 @@ preload ${OUTPUTDIR}
 cleanDir ${OUTPUTDIR} ${RPTDIR}
 
 #
-# Run the vega_ensembl sequence load
+# Run the ensembl sequence load
 #
 
-echo "Running vega_ensemblseqload ${CONFIG_LOAD}. Loading sequences = ${LOAD_SEQS}" | tee -a ${LOG_DIAG} ${LOG_PROC}
+echo "Running ensemblseqload ${CONFIG_LOAD}. Loading sequences = ${LOAD_SEQS}" | tee -a ${LOG_DIAG} ${LOG_PROC}
 
 
 # log time and input files to process

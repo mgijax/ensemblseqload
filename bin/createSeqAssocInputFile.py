@@ -4,7 +4,7 @@
 #
 # Purpose:
 #       From sequence input file create sequence association input file
-#       for current provider (VEGA or Ensembl)
+#       for current provider (Ensembl)
 #
 Usage="createSeqAssocInputFile.py"
 # Env Vars:
@@ -16,12 +16,6 @@ Usage="createSeqAssocInputFile.py"
 #
 # Inputs:
 # 1. FASTA sequence file. We parse the description line
-#  VEGA transcript
-#  >OTTMUST00000086906 cdna:all chromosome:VEGA37:11:3028975:3030149:1 Gene:OTTMUSG00000000759
-#
-#  VEGA protein
-#  >OTTMUSP00000000697 pep:all chromosome:VEGA37:11:3031884:3093466:-1 Gene:OTTMUSG00000005013 Transcript:OTTMUST00000001465
-#
 #  Ensembl transcript
 #  >ENSMUST00000082392 cdna:known chromosome:NCBIM37:MT:2751:3707:1 gene:ENSMUSG000064341 
 #
