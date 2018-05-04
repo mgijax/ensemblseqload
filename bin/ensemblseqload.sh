@@ -202,7 +202,7 @@ ${JAVA} ${JAVARUNTIMEOPTS} -classpath ${CLASSPATH} \
 -DJOBKEY=${JOBKEY} ${DLA_START}
 
 STAT=$?
-checkStatus ${STAT} "${VEGA_ENSEMBLSEQLOAD}"
+checkStatus ${STAT} "${ENSEMBLSEQLOAD}"
 
 # update serialization on mgi_reference_assoc, seq_source_assoc
 cat - <<EOSQL | ${PG_DBUTILS}/bin/doisql.csh $0 | tee -a ${LOG_DIAG}
@@ -221,7 +221,7 @@ then
 
     # create input file for then run seqseqassocload
     ${APP_CAT_METHOD} ${APP_INFILES} |
-	${VEGA_ENSEMBLSEQLOAD}/bin/createSeqAssocInputFile.py
+	${ENSEMBLSEQLOAD}/bin/createSeqAssocInputFile.py
     STAT=$?
     checkStatus ${STAT} "createSeqAssocInputFile"
 

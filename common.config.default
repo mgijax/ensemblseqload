@@ -34,7 +34,7 @@ JAVARUNTIMEOPTS="-Xms2G -Xmx2G"
 
 JAVA_LIB=${MGI_JAVALIB}/core.jar:${MGI_JAVALIB}/dbsmgd.jar:${MGI_JAVALIB}/dbsrdr.jar:${MGI_JAVALIB}/dla.jar
 
-CLASSPATH=.:${JAVA_LIB}:${COMMON_CLASSPATH}:${VEGA_ENSEMBLSEQLOAD}/ensemblseqload.jar
+CLASSPATH=.:${JAVA_LIB}:${COMMON_CLASSPATH}:${ENSEMBLSEQLOAD}/ensemblseqload.jar
 
 # Java classes
 DLA_LOADER=org.jax.mgi.app.ensemblseqloader.EnsemblSeqloader
@@ -165,6 +165,6 @@ export RADAR_BCP_OK_TO_OVERWRITE
 ###########################################################################
 
 #  Installation directory for the ensembl sequence load
-INSTALLDIR=${VEGA_ENSEMBLSEQLOAD}
+INSTALLDIR=${ENSEMBLSEQLOAD}
 
 export INSTALLDIR
