@@ -1,20 +1,25 @@
-TAG: vega_ensemblseqload-6-0-13-1
+TAG: ensemblseqload-6-0-13-2
+DATE: 11/1/2018
+STAFF: lec 
+TR12950/Ensembl 93
+
+TAG: ensemblseqload-6-0-13-1
 DATE: 09/04/2018
 STAFF: lec 
 CHANGES: TR12734/GenFeVa merge
 remove VEGA
 
-TAG: vega_ensemblseqload-6-0-12-2
+TAG: ensemblseqload-6-0-12-2
 DATE: 05/09/2018
 STAFF: lec 
 CHANGES:
 1) TR12859/Ensembl 92
 
-TAG: vega_ensemblseqload-6-0-12-1
+TAG: ensemblseqload-6-0-12-1
 DATE: 03/07/2018
 STAFF: sc
 CHANGES: TR12662 GMC project
-1) vega_ensemblseqload.sh - auto-sequencing
+1) ensemblseqload.sh - auto-sequencing
 
 TAG: assemblyseqload-6-0-11-2
 DATE: 02/12/2018
@@ -22,24 +27,24 @@ STAFF: lec
 CHANGES:
 1) TR12776/Ensembl 91
 
-TAG: vega_ensemblseqload-tr12662-BP
+TAG: ensemblseqload-tr12662-BP
 DATE: 02/01/2018
 STAFF: sc
 CHANGES: GMC project
 
-TAG: vega_ensemblseqload-6-0-11-1
+TAG: ensemblseqload-6-0-11-1
 DATE: 10/31/2017
 STAFF: lec 
 CHANGES:
 1) TR12660/Ensembl 90
 
-TAG: vega_ensemblseqload-6-0-10-1
+TAG: ensemblseqload-6-0-10-1
 DATE: 07/14/2017
 STAFF: lec 
 CHANGES:
 1) TR12610/Ensembl 89
 
-TAG: vega_ensemblseqload-6-0-6-1
+TAG: ensemblseqload-6-0-6-1
 DATE: 10/27/2016
 STAFF: lec 
 CHANGES: TR12422/VEGA 66/ENSEMBL 86
@@ -53,9 +58,9 @@ ensembl_proteinseqload.config
 ensembl_transcriptseqload.config
 SEQ_RELEASE_DATE 
 
-TAG: vega_ensemblseqload-6-0-4-1
-TAG: vega_ensemblseqload-6-0-4-3
-TAG: vega_ensemblseqload-6-0-4-2
+TAG: ensemblseqload-6-0-4-1
+TAG: ensemblseqload-6-0-4-3
+TAG: ensemblseqload-6-0-4-2
 DATE: 07/20/2016, 07/25/2016
 STAFF: lec 
 CHANGES: TR12354/12382/VEGA 65/Ensembl 85
@@ -69,26 +74,26 @@ ensembl_proteinseqload.config
 ensembl_transcriptseqload.config
 SEQ_RELEASE_DATE 
 
-TAG: vega_ensemblseqload-6-0-4-1
+TAG: ensemblseqload-6-0-4-1
 DATE: 06/16/2016
 STAFF: lec 
 CHANGES:
 1) convert to git
 
-TAG: vega_ensemblseqload-6-0-3-2
+TAG: ensemblseqload-6-0-3-2
 DATE: 03/21/2016
 STAFF: lec 
 CHANGES: 
 1) TR12220/ENSEMBL 83/84
 
-TAG: vega_ensemblseqload-6-0-3-1
+TAG: ensemblseqload-6-0-3-1
 DATE: 03/03/2016
 STAFF: lec 
 CHANGES: 
 1) TR12221/VEGA 64
 
-TAG: vega_ensemblseqload-6-0-2-1
-TAG: vega_ensemblseqload-tr12070-1
+TAG: ensemblseqload-6-0-2-1
+TAG: ensemblseqload-tr12070-1
 DATE: 12/02/2015
 STAFF: lec 
 CHANGES: 
@@ -98,92 +103,92 @@ b) ensembl_transcriptseqload.config
 c) vega_proteinseqload.config 
 d) vega_transcriptseqload.config
 
-TAG: vega_ensemblseqload-6-0-1-1
+TAG: ensemblseqload-6-0-1-1
 DATE: 11/30/2015
 STAFF: dbm
 CHANGES: TR11904 & TR12199
 1) common.config.default: Don't mail curator log to mgiadmin
 
-TAG: vega_ensemblseqload-tr12070-BP
+TAG: ensemblseqload-tr12070-BP
 DATE: 11/2/2015
 STAFF: lec
 CHANGES:
 1) branch point tag for TR12070/TR12116/Ensembl 82
 
-TAG: vega_ensemblseqload-6-0-0-1
+TAG: ensemblseqload-6-0-0-1
 DATE: 07/24/2015
 STAFF: lec
 CHANGES:
 1) TR11750/postgres
 
-TAG: vega_ensemblseqload-tr11750-MP
-TAG: vega_ensemblseqload-tr11750-BP
+TAG: ensemblseqload-tr11750-MP
+TAG: ensemblseqload-tr11750-BP
 DATE: 7/1/2015
 STAFF: kstone/pf
 CHANGES: break/merge point tags
 
-TAG: vega_ensemblseqload-5-2-1-3
+TAG: ensemblseqload-5-2-1-3
 DATE: 01/16/2015
 STAFF: sc
 CHANGES: TR11890/VEGA 58
 a) vega_proteinseqload.config, vega_transcriptseqload.config -
    updated SEQ_RELEASE_DATE
 
-TAG: vega_ensemblseqload-5-2-1-2
+TAG: ensemblseqload-5-2-1-2
 DATE: 12/09/2014
 STAFF: sc
 CHANGES: TR11794/ENSEMBL 78
 a) ensembl_proteinseqload.config, ensembl_transcriptseqload.config -
    updated SEQ_RELEASE_DATE
 
-TAG: vega_ensemblseqload-5-2-1-1
+TAG: ensemblseqload-5-2-1-1
 DATE: 12/02/2014
 STAFF: sc
 CHANGES: TR11794/ENSEMBL 76
 a) vega_proteinseqload.config, vega_transcriptseqload.config - 
    updated SEQ_RELEASE_DATE
 
-TAG: vega_ensemblseqload-5-1-9-1
+TAG: ensemblseqload-5-1-9-1
 DATE: 08/11/2014
 STAFF: lec
 CHANGES: TR11716/VEGA 54
 a) SEQ_RELEASE_DATE : vega_proteinseqload.config, vega_transcriptseqload.config
 
-TAG: vega_ensemblseqload-5-1-6-1
+TAG: ensemblseqload-5-1-6-1
 DATE: 01/23/2014
 STAFF: lec
 CHANGES: TR11555/ensembl 74
 
-TAG: vega_ensemblseqload-5-1-5-1
+TAG: ensemblseqload-5-1-5-1
 DATE: 12/03/2013
 STAFF: lec
 CHANGES: TR11528/vega 54
 
-TAG: vega_ensemblseqload-5-1-4-1
+TAG: ensemblseqload-5-1-4-1
 DATE: 06/19/2013
 STAFF: lec
 CHANGES: TR11316/ensembl 72/vega 52
 
-TAG: vega_ensemblseqload-5-1-1-1
+TAG: ensemblseqload-5-1-1-1
 DATE: 10/11/2012
 STAFF: sc
 CHANGES: CFAM/B38
 
-TAG: vega_ensemblseqload-5-0-0-3
+TAG: ensemblseqload-5-0-0-3
 DATE: 10/11/2012
 STAFF: sc
 CHANGES: TR7106 (CFAM) TR10711 (Build 38)
 Updated config SEQ_RELEASE_NO="GRCm38"
 
-TAG: vega_ensemblseqload-5-0-0-2
-TAG: vega_ensemblseqload-5-0-0-1
+TAG: ensemblseqload-5-0-0-2
+TAG: ensemblseqload-5-0-0-1
 DATE: 08/31/2012
 STAFF: sc
 CHANGES: TR7106 (CFAM) TR10711 (Build 38)
 1) config changes for build 38
 2) SEQ_RELEASE_DATE needs to be in yyyy/mm/dd format
 
-TAG: vega_ensemblseqload-4-4-2-1
+TAG: ensemblseqload-4-4-2-1
 DATE: 03/12/2012
 STAFF: sc
 CHANGES: TR11002/TR11003
@@ -192,21 +197,21 @@ CHANGES: TR11002/TR11003
 3) vega_proteinseqload.config - updated date for build 46
 4) vega_transcriptseqload.config - updated date for build 46
 
-TAG: vega_ensemblseqload-4-4-1-4
+TAG: ensemblseqload-4-4-1-4
 DATE: 12/15/2011
 STAFF: sc
 CHANGES:
 1) ensembl_proteinseqload.config - updated date for build 65
 2) ensembl_transcriptseqload.config - updated date for build 65
 
-TAG: vega_ensemblseqload-4-4-1-3
+TAG: ensemblseqload-4-4-1-3
 DATE: 09/07/2011
 STAFF: lec
 CHANGES:
 1) vega_proteinseqload.config - updated for build 44
 2) vega_transcriptseqload.config - updated for build 44
 
-TAG: vega_ensemblseqload-4-4-1-2
+TAG: ensemblseqload-4-4-1-2
 DATE: 03/01/2011
 STAFF: dbm
 CHANGES:
@@ -215,104 +220,104 @@ CHANGES:
 3) vega_proteinseqload.config - updated for build 41
 4) vega_transcriptseqload.config - updated for build 41
 
-TAG: vega_ensemblseqload-4-4-1-1
+TAG: ensemblseqload-4-4-1-1
 DATE: 01/05/2011
 STAFF: sc
 CHANGES: TR10510 - Add loading of Ensembl non-coding RNA transcript sequences
 1) ensembl_transcriptseqload.config - add additional file to APP_INFILES
 2) add checking for existence of  multiple files in APP_INFILES
 
-TAG: vega_ensemblseqload-4-4-0-1
+TAG: ensemblseqload-4-4-0-1
 DATE: 09/09/2010
 STAFF: sc
 CHANGES:
 1) Config changes for Ensembl release 58
 
-TAG: vega_ensemblseqload-4-3-3-7
+TAG: ensemblseqload-4-3-3-7
 DATE: 04/15/2010
 STAFF: sc
 CHANGES:
 1) Config changes for Ensembl release 57
 
-TAG: vega_ensemblseqload-4-3-3-6
+TAG: ensemblseqload-4-3-3-6
 DATE: 03/12/2010
 STAFF: sc
 CHANGES: index.html changes
 
-TAG: vega_ensemblseqload-4-3-3-5
-TAG: vega_ensemblseqload-4-3-3-4
+TAG: ensemblseqload-4-3-3-5
+TAG: ensemblseqload-4-3-3-4
 DATE: 03/08/2010
 STAFF: sc
 CHANGES:
 1) Install - loop thru config files using DLAINSTALL -x option
 2) fixed INPUTDIR added 'input'
 
-TAG: vega_ensemblseqload-4-3-3-3
+TAG: ensemblseqload-4-3-3-3
 DATE: 03/05/2010
 STAFF: sc
 CHANGES:
 1) Updated some input/output file names and paths
 2) Overall comment update
 
-TAG: vega_ensemblseqload-4-3-3-2
+TAG: ensemblseqload-4-3-3-2
 DATE: 01/24/2010
 STAFF: sc
 CHANGES:
 1) provider.config files added CONFIG_SEQASSOC to
    run seqseqassocload
 2) INFILE_SEQASSOCLOAD - updated filename
-3) vega_ensemblseqload.sh - added call to seqseqassocload
+3) ensemblseqload.sh - added call to seqseqassocload
 
-TAG: vega_ensemblseqload-4-3-3-1
-TAG: vega_ensemblseqload-4-3-1-10
+TAG: ensemblseqload-4-3-3-1
+TAG: ensemblseqload-4-3-1-10
 DATE: 01/22/2010
 STAFF: sc
 CHANGES:
 1) all config files, disambiguated marker association and 
    sequence association
 2) added createSeqAssocInputFile.py
-3) vega_ensemblseqload.sh - added commented out call to 
+3) ensemblseqload.sh - added commented out call to 
 	createSeqAssocInputFile.py
 
-TAG: vega_ensemblseqload-4-3-1-9
+TAG: ensemblseqload-4-3-1-9
 DATE: 01/22/2010
 STAFF: sc
 CHANGES:
 1) Update curation logging, updated specific config files
   with proper RELEASE_NO
 
-TAG: vega_ensemblseqload-4-3-1-8
+TAG: ensemblseqload-4-3-1-8
 DATE: 01/20/2010
 STAFF: sc
 CHANGES: 
 1) *seqload.config - updated to use /data/downloads symlinks
 2) vega_seqload.config - updated filename as they changed at vega
 
-TAG: vega_ensemblseqload-4-3-1-7
+TAG: ensemblseqload-4-3-1-7
 DATE: 12/14/2009
 STAFF: sc
 CHANGES: ensembl seq config files: corrected SEQ_RELEASE_NUM to v56
 
-TAG: vega_ensemblseqload-4-3-1-6
+TAG: ensemblseqload-4-3-1-6
 DATE: 12/08/2009
 STAFF: sc
 CHANGES: I realized that the associatins were only getting redone
   when reloading sequences, thus the following changes:
-1) vega_ensemblseqload.sh - added processing of second parameter
+1) ensemblseqload.sh - added processing of second parameter
    a boolean indicating to load sequences and assocs when true, 
    only assocs when false
 2) VegaEnsemblSeqloadCfg - added boolean getLoadSeqs()
 3) VegaEnsemblSeqloader - added checking for boolean and processing 
    accordingly.
-TAG: vega_ensemblseqload-4-3-1-5
-TAG: vega_ensemblseqload-4-3-1-4
-TAG: vega_ensemblseqload-4-3-1-3
-TAG: vega_ensemblseqload-4-3-1-2
+TAG: ensemblseqload-4-3-1-5
+TAG: ensemblseqload-4-3-1-4
+TAG: ensemblseqload-4-3-1-3
+TAG: ensemblseqload-4-3-1-2
 DATE: 12/01/2009
 STAFF: sc
 CHANGES: Added ./bin/run_assocload, corrected input file in vega cdna config
 
-TAG: vega_ensemblseqload-4-3-1-1
+TAG: ensemblseqload-4-3-1-1
 DATE: 11/30/2009
 STAFF: sc
 CHANGES: TR9774 initial tag
