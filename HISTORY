@@ -1,3 +1,9 @@
+TAG: ensemblseqload-6-0-22-??
+DATE: ??
+STAFF: sc
+CHANGES:
+1. createSeqAssocInputFile.py - updated to python 3, had never been done)
+
 TAG: ensemblseqload-6-0-17-3
 TAG: ensemblseqload-6-0-17-2
 DATE: 12/29/2021
