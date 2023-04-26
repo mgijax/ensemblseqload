@@ -221,7 +221,7 @@ then
 
     # create input file for then run seqseqassocload
     ${APP_CAT_METHOD} ${APP_INFILES} |
-	${ENSEMBLSEQLOAD}/bin/createSeqAssocInputFile.py
+	${PYTHON} ${ENSEMBLSEQLOAD}/bin/createSeqAssocInputFile.py
     STAT=$?
     checkStatus ${STAT} "createSeqAssocInputFile"
 

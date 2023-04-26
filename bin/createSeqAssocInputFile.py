@@ -1,5 +1,3 @@
-#!/usr/local/bin/python
-
 ##########################################################################
 #
 # Purpose:
@@ -78,12 +76,12 @@ qualifier = ''
 def init():
     global inFile, outFile, seq2Position, qualifier
 
-    print '%s' % mgi_utils.date()
-    print 'Initializing'
+    print('%s' % mgi_utils.date())
+    print('Initializing')
 
     inFile = sys.stdin
     if len(sys.argv) != 1:
-            print Usage
+            print(Usage)
             sys.exit(1)
     
     outFilePath = os.environ['INFILE_SEQASSOCLOAD']
@@ -103,20 +101,20 @@ def init():
 # Throws: nothing
 
 def run():
-    print 'Creating association file'
+    print('Creating association file')
     for line in inFile.readlines():
-	if not line[0:1] == GT:
-	    continue
+        if not line[0:1] == GT:
+            continue
         else:
-	    tokenList = string.split(line, SPACE)
-	    seq1 = tokenList[seq1Position]
+            tokenList = str.split(line, SPACE)
+            seq1 = tokenList[seq1Position]
 	    # remove leading GT
-	    seq1 = string.strip(seq1[1:])
-	    seq2 = tokenList[seq2Position]
-	    seq2 = string.strip((string.split(seq2, COLON))[1])
-            #print '%s %s %s %s' % (seq1, qualifier, seq2, CRT)
-	    outFile.write('%s%s%s%s%s%s' %  
-		(seq1, TAB, qualifier, TAB, seq2, CRT) )
+            seq1 = str.strip(seq1[1:])
+            seq2 = tokenList[seq2Position]
+            seq2 = str.strip((str.split(seq2, COLON))[1])
+            #print('%s %s %s %s' % (seq1, qualifier, seq2, CRT))
+            outFile.write('%s%s%s%s%s%s' %  
+                (seq1, TAB, qualifier, TAB, seq2, CRT) )
     inFile.close()
     outFile.close()
 #
