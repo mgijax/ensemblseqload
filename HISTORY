@@ -1,3 +1,11 @@
+TAG: ensemblseqload-6-0-23-1
+DATE: 01/16/2023
+STAFF: lec
+CHANGES: 
+wts2-1064/fl2-694/ENSEMBL release 111
+#       modified:   ensembl_proteinseqload.config
+#       modified:   ensembl_transcriptseqload.config
+
 TAG: ensemblseqload-6-0-22-3
 DATE: 04/26/2023
 STAFF: sc
