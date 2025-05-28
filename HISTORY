@@ -4,6 +4,13 @@ STAFF: lec
 CHANGES: 
 wts2-1670/e4g-268/ENSEMBL 114
 
+DATE: 01/08/2025
+STAFF: lec
+CHANGES: 
+wts2-1591/e4g-93/ENSEMBL gene 113
+#       modified:   ensembl_proteinseqload.config
+#       modified:   ensembl_transcriptseqload.config
+
 TAG: ensemblseqload-6-0-23-1
 DATE: 01/16/2023
 STAFF: lec
